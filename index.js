@@ -22,7 +22,10 @@ app.use(bodyParser())
 
 app.set('view engine', 'ejs')
 
-app.use(session({ secret: 'mysecretsession'}))
+// session deprecation warning messages colud be fixed using
+//these config props resave: true, saveUninitialized: true
+// we have to explicitly config them
+app.use(session({ secret: 'mysecretsession', resave: true, saveUninitialized: true}))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
